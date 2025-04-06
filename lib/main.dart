@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -37,10 +38,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Container(
+      body: Stack(
+        children: [
+          SafeArea(
+            child: Container(
               padding: const EdgeInsets.all(20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -170,17 +171,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: SvgPicture.asset(
-                'assets/images/bottom_icon.svg',
-                fit: BoxFit.cover,
-              ),
-            )
-          ],
-        ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: SvgPicture.asset(
+              'assets/images/bottom_icon.svg',
+              fit: BoxFit.cover,
+            ),
+          )
+        ],
       ),
     );
   }

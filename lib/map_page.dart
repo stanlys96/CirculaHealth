@@ -1,6 +1,4 @@
-import 'package:circulahealth/components/radar_pulse.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -14,34 +12,198 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            // Full-screen Map
-            const Positioned.fill(
-              child: GoogleMap(
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(-6.200000, 106.816666),
-                  zoom: 15,
-                ),
-                myLocationEnabled: true,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            bottom: 0,
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Image.asset(
+              "assets/images/map_background.png",
+              fit: BoxFit.fill,
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(11),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    alignment: Alignment.center,
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Find',
+                        // prefixIcon: Icon(Icons.search),
+                        border: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(
+                                bottom: 20,
+                                right: 7.5,
+                              ),
+                              padding: const EdgeInsets.all(16.0),
+                              height: 162,
+                              decoration: BoxDecoration(
+                                color: const Color(
+                                  0xFFFF8E65,
+                                ),
+                                borderRadius: BorderRadius.circular(17),
+                              ),
+                              child: const Text(
+                                "Find blood",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(
+                                bottom: 20,
+                                left: 7.5,
+                              ),
+                              padding: const EdgeInsets.all(16.0),
+                              height: 162,
+                              decoration: BoxDecoration(
+                                color: const Color(
+                                  0xFFFFF292,
+                                ),
+                                borderRadius: BorderRadius.circular(17),
+                              ),
+                              child: const Text(
+                                "Find donor",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        padding: const EdgeInsets.all(16),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.search,
+                                    size: 24,
+                                    color: Color(
+                                      0xFFBFBFBF,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Find",
+                                    style: TextStyle(
+                                      color: Color(
+                                        0xFFBFBFBF,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.home,
+                                    size: 24,
+                                    color: Color(
+                                      0xFFBFBFBF,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Home",
+                                    style: TextStyle(
+                                      color: Color(
+                                        0xFFBFBFBF,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.handshake,
+                                    size: 24,
+                                    color: Color(
+                                      0xFFBFBFBF,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Menu",
+                                    style: TextStyle(
+                                      color: Color(
+                                        0xFFBFBFBF,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.menu,
+                                    size: 24,
+                                    color: Color(
+                                      0xFFBFBFBF,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Menu",
+                                    style: TextStyle(
+                                      color: Color(
+                                        0xFFBFBFBF,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                ],
               ),
             ),
-
-            // Radar pulse overlay (center of screen)
-            Center(child: RadarPulse()),
-
-            // Optional: Add buttons or info
-            const Positioned(
-              top: 40,
-              left: 16,
-              child: Text(
-                'Searching nearby...',
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
